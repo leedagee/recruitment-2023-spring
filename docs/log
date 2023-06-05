@@ -1,0 +1,29 @@
+0605
+    1120 CSR 表示，不需要那么高的压缩率，需要能较好分划
+    1530 思考：A 需要转置，C 也需要先算转置后转置回去
+    2155 过了测试，单线程，大概只做到了 100x 左右
+        stdc++ [] operator 带来的 overhead 猜测不存在了
+        访存除了两次转置都是连续的了
+        非零元素不运算（当然）
+```
+>>> baseline: 2.373409 s
+>>> optimized: 17.791000 ms
+>>> baseline: 18.987256 s
+>>> optimized: 117.739000 ms
+>>> baseline: 2.361704 s
+>>> optimized: 17.570000 ms
+>>> baseline: 19.453971 s
+>>> optimized: 119.749000 ms
+>>> baseline: 2.533078 s
+>>> optimized: 37.249000 ms
+>>> baseline: 19.151503 s
+>>> optimized: 280.453000 ms
+>>> baseline: 2.434384 s
+>>> optimized: 23.854000 ms
+>>> baseline: 19.241811 s
+>>> optimized: 199.792000 ms
+>>> baseline: 2.353451 s
+>>> optimized: 29.461000 ms
+>>> baseline: 19.182403 s
+>>> optimized: 238.401000 ms
+```

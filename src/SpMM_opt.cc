@@ -1,6 +1,8 @@
 #include "SpMM.hh"
 #include "leedagee/CSR.hh"
+#ifdef VTUNE_ENABLE
 #include <ittnotify.h>
+#endif
 
 using namespace leedagee;
 

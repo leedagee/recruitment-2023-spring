@@ -5,7 +5,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native")
 set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} -Ofast")
 project(SpMM LANGUAGES C CXX)
 
-set(VTUNE_ENABLE true)
 set(VTUNE_DIR "/opt/intel/oneapi/vtune/2023.1.0")
 
 if(${VTUNE_ENABLE})

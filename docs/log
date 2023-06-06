@@ -18,25 +18,6 @@
 
     1450
         开个 branch 测测不转置的性能（编译器做 SIMD 显然是优化不出来了）
-```
->>> baseline: 2.373409 s
->>> optimized: 17.791000 ms
->>> baseline: 18.987256 s
->>> optimized: 117.739000 ms
->>> baseline: 2.361704 s
->>> optimized: 17.570000 ms
->>> baseline: 19.453971 s
->>> optimized: 119.749000 ms
->>> baseline: 2.533078 s
->>> optimized: 37.249000 ms
->>> baseline: 19.151503 s
->>> optimized: 280.453000 ms
->>> baseline: 2.434384 s
->>> optimized: 23.854000 ms
->>> baseline: 19.241811 s
->>> optimized: 199.792000 ms
->>> baseline: 2.353451 s
->>> optimized: 29.461000 ms
->>> baseline: 19.182403 s
->>> optimized: 238.401000 ms
-```
+
+    1600
+        试完了，性能差的不敢看，老老实实学习高效矩阵转置（）

@@ -14,10 +14,11 @@ Matrix SpMM_opt(const Matrix &A, const SparseMatrix &B) {
   auto [m, k] = A.size();
   auto [n, _k] = B.size();
   std::vector<float> _aT(m * k);
+  auto *a = reinterpret_cast<const vector<float>*>(&A)->data();
   auto aT = _aT.data();
   for (int i = 0; i < m; i++)
     for (int j = 0; j < k; j++) {
-      aT[j * m + i] = A.at(i, j);
+      aT[j * m + i] = a[i * k + j];
     }
   std::vector<float> _cT(m * n);
   auto cT = _cT.data();

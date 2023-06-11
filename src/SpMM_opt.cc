@@ -33,7 +33,6 @@ Matrix SpMM_opt(const Matrix &A, const SparseMatrix &B) {
     #ifdef STAT_FLADDOPS
     long long numaddops = 0;
     #endif
-    #pragma omp parallel for num_threads(16)
     for (int idx = 0; idx < nelems; idx++) {
       const auto &elem = bS.d[idx];
       const auto &r = elem.x, &c = elem.y;

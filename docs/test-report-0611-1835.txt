@@ -1,0 +1,40 @@
+>>> baseline: 106.558000 ms
+>>> optimized: 1.269394 s
+>>> average optimized: 4958us
+Speedup: 21.3838x
+>>> baseline: 1.405426 s
+>>> optimized: 5.694065 s
+>>> average optimized: 22242us
+Speedup: 63.1682x
+>>> baseline: 111.795000 ms
+>>> optimized: 984.985000 ms
+>>> average optimized: 3847us
+Speedup: 28.878x
+>>> baseline: 1.467755 s
+>>> optimized: 4.830142 s
+>>> average optimized: 18867us
+Speedup: 77.754x
+>>> baseline: 109.751000 ms
+>>> optimized: 4.237360 s
+>>> average optimized: 16552us
+Speedup: 6.58579x
+>>> baseline: 1.379019 s
+>>> optimized: 46.760322 s
+>>> average optimized: 182657us
+Speedup: 7.5497x
+>>> baseline: 97.839000 ms
+>>> optimized: 2.619546 s
+>>> average optimized: 10232us
+Speedup: 9.48148x
+>>> baseline: 1.535273 s
+>>> optimized: 26.496774 s
+>>> average optimized: 103503us
+Speedup: 14.8309x
+>>> baseline: 111.574000 ms
+>>> optimized: 4.186009 s
+>>> average optimized: 16351us
+Speedup: 6.78834x
+>>> baseline: 1.466512 s
+>>> optimized: 43.486704 s
+>>> average optimized: 169869us
+Speedup: 8.63027x

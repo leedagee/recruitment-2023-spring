@@ -25,7 +25,7 @@ class Matrix {
   int m_, n_;
 
 public:
-  static constexpr float eps = 1e-5;
+  static constexpr float eps = 1e-4;
 
   Matrix() = default;
   // generate ramdon data

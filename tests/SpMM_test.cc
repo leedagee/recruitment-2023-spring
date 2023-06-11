@@ -28,6 +28,7 @@ int main(int argc, char *argv[]) {
     std::cout << endl << "result not match" << endl;
     return -1;
   }
+  std::cout << ">>> average optimized: " << *optimized / 1us / VTUNE_REPR << "us" << endl;
   std::cout << "Speedup: "
             << (*baseline / 1ms) / (float)(*optimized / 1ms) * VTUNE_REPR << 'x'
             << std::endl;

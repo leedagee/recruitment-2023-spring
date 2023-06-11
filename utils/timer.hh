@@ -2,6 +2,7 @@
 #include <chrono>
 #include <iostream>
 #include <string>
+#include <memory>
 using namespace std::chrono_literals;
 
 template <class T, class U>
@@ -24,9 +25,10 @@ std::string duration_to_string(std::chrono::duration<T, U> duration) {
 
 class ScopeTimer {
 public:
-  ScopeTimer(std::string name)
+  ScopeTimer(std::string name, std::shared_ptr<std::chrono::microseconds> result)
       : m_name(std::move(name)),
-        m_beg(std::chrono::high_resolution_clock::now()), m_tick(m_beg) {}
+        m_beg(std::chrono::high_resolution_clock::now()),
+        m_tick(m_beg), m_res(result) {}
   void tick(const std::string &name) {
     auto end = std::chrono::high_resolution_clock::now();
     auto dur =
@@ -40,10 +42,12 @@ public:
     auto dur =
         std::chrono::duration_cast<std::chrono::microseconds>(end - m_beg);
     std::cout << ">>> " << m_name << ": " << duration_to_string(dur) << "\n";
+    *m_res = dur;
   }
 
 private:
   std::string m_name;
   std::chrono::time_point<std::chrono::high_resolution_clock> m_beg;
   std::chrono::time_point<std::chrono::high_resolution_clock> m_tick;
+  std::shared_ptr<std::chrono::microseconds> m_res;
 };

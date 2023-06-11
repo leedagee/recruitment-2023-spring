@@ -30,14 +30,24 @@ Matrix SpMM_opt(const Matrix &A, const SparseMatrix &B) {
     auto cT = _cT.data();
     auto bS = fromSparseMatrix(B);
     int nelems = bS.d.size();
+    #ifdef STAT_FLADDOPS
+    long long numaddops = 0;
+    #endif
     #pragma omp parallel for num_threads(16)
     for (int idx = 0; idx < nelems; idx++) {
       const auto &elem = bS.d[idx];
       const auto &r = elem.x, &c = elem.y;
       #pragma omp simd
-      for (int i = 0; i < m; i++)
+      for (int i = 0; i < m; i++) {
         cT[r * m + i] += elem.v * aT[c * m + i];
+        #ifdef STAT_FLADDOPS
+        numaddops++;
+        #endif
+      }
     }
+    #ifdef STAT_FLADDOPS
+    std::cerr << "optimized numaddops: " << numaddops << std::endl;
+    #endif
     std::vector<float> _c(m * n);
     auto c = _c.data();
     for (int _i = 0; _i < m; _i += BLOCK_SIZE)

@@ -14,6 +14,10 @@ if(${VTUNE_ENABLE})
     include_directories("${VTUNE_DIR}/sdk/include")
 endif()
 
+if(${STAT_FLADDOPS})
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DSTAT_FLADDOPS")
+endif()
+
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DVTUNE_REPR=${VTUNE_REPR}")
 
 find_package(OpenMP)

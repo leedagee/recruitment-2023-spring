@@ -5,6 +5,7 @@
 #include <fstream>
 #include <cassert>
 #include <tuple>
+#include <iomanip>
 
 
 SparseMatrix::SparseMatrix(string &filename) {
@@ -76,13 +77,17 @@ float& Matrix::at(int i, int j) {
 bool operator==(const Matrix &A, const Matrix &B) {
   if (A.size() != B.size()) return 0;
   int rows, cols;
+  bool mismatch = false;
   std::tie(rows, cols) = A.size();
   for (int i = 0; i < rows; ++i) {
     for (int j = 0; j < cols; ++j) {
-      if (abs(A.at(i, j) - B.at(i, j)) > Matrix::eps)  return 0;
+      if (abs(A.at(i, j) - B.at(i, j)) > Matrix::eps) {
+        std::cerr << std::setprecision(7) << "Mismatch at (" << i << ',' << j << "). Values: " << A.at(i, j) << ',' << B.at(i,j) << std::endl;
+        mismatch = true;
+      }
     }
   }
-  return 1;
+  return !mismatch;
 }
 
 bool operator!=(const Matrix &A, const Matrix &B) { 

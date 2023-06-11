@@ -1,0 +1,26 @@
+>>> baseline: 123.449000 ms
+>>> optimized: 6.213759 s
+>>> baseline: 2.423608 s
+>>> optimized: 30.559570 s
+>>> baseline: 142.232000 ms
+>>> optimized: 6.465455 s
+>>> baseline: 2.737583 s
+>>> optimized: 25.880141 s
+>>> baseline: 125.702000 ms
+>>> optimized: 18.368578 s
+>>> baseline: 1.886086 s
+>>> optimized: 248.944243 s
+
+result not match
+>>> baseline: 95.716000 ms
+>>> optimized: 11.210957 s
+>>> baseline: 1.752035 s
+>>> optimized: 116.551378 s
+>>> baseline: 89.871000 ms
+>>> optimized: 16.240581 s
+
+result not match
+>>> baseline: 1.535468 s
+>>> optimized: 161.078371 s
+
+result not match

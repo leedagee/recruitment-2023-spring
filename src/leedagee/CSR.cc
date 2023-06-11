@@ -4,8 +4,9 @@ namespace leedagee {
 
 struct CSR fromSparseMatrix(const SparseMatrix &orig) {
   struct CSR r;
-  auto *data = reinterpret_cast<const std::vector<float>*>(&orig)->data();
+  auto *data = reinterpret_cast<const std::vector<float> *>(&orig)->data();
   std::tie(r.m, r.n) = orig.size();
+  r.d.reserve(r.m * r.n / 8);
   for (int i = 0, c = 0; i < r.m; i++) {
     for (int j = 0; j < r.n; j++, c++) {
       const float v = data[c];

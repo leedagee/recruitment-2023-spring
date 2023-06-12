@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="(empty)"
+	BuildStamp="20230611-1024-Experimental"
+	Name="(empty)"
+	Generator="ctest-3.26.4"
+	CompilerName=""
+	CompilerVersion=""
+	OSName="Linux"
+	Hostname="Gaus"
+	OSRelease="6.3.7-arch1-1"
+	OSVersion="#1 SMP PREEMPT_DYNAMIC Sat, 10 Jun 2023 00:35:35 +0000"
+	OSPlatform="x86_64"
+	Is64Bits="1"
+	VendorString="GenuineIntel"
+	VendorID="Intel Corporation"
+	FamilyID="6"
+	ModelID="154"
+	ProcessorCacheSize="12288"
+	NumberOfLogicalCPU="16"
+	NumberOfPhysicalCPU="12"
+	TotalVirtualMemory="40959"
+	TotalPhysicalMemory="31735"
+	LogicalProcessorsPerPhysical="1"
+	ProcessorClockFrequency="2235.91"
+	>
+	<Testing>
+		<StartDateTime>Jun 11 18:39 CST</StartDateTime>
+		<StartTestTime>1686479977</StartTestTime>
+		<TestList>
+			<Test>./triangular-2048</Test>
+		</TestList>
+		<Test Status="failed">
+			<Name>triangular-2048</Name>
+			<Path>.</Path>
+			<FullName>./triangular-2048</FullName>
+			<FullCommandLine>/home/leedagee/proj/heptagon-recruitment-2023-spring/build/tests/SpMM_test "/home/leedagee/proj/heptagon-recruitment-2023-spring/data/2048x2048triangular_0.bin"</FullCommandLine>
+			<Results>
+				<NamedMeasurement type="text/string" name="Exit Code">
+					<Value>Failed</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Exit Value">
+					<Value>255</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="Execution Time">
+					<Value>18.9527</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="Processors">
+					<Value>1</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Completion Status">
+					<Value>Completed</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Command Line">
+					<Value>/home/leedagee/proj/heptagon-recruitment-2023-spring/build/tests/SpMM_test "/home/leedagee/proj/heptagon-recruitment-2023-spring/data/2048x2048triangular_0.bin"</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Environment">
+					<Value>#CTEST_RESOURCE_GROUP_COUNT=</Value>
+				</NamedMeasurement>
+				<Measurement>
+					<Value>&gt;&gt;&gt; baseline: 18.877438 s
+&gt;&gt;&gt; optimized: 0 ns
+
+result not match
+</Value>
+				</Measurement>
+			</Results>
+		</Test>
+		<EndDateTime>Jun 11 18:39 CST</EndDateTime>
+		<EndTestTime>1686479996</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>

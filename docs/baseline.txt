@@ -1,0 +1,40 @@
+>>> baseline: 2.385605 s
+>>> optimized: 0 ns
+
+result not match
+>>> baseline: 19.088902 s
+>>> optimized: 0 ns
+
+result not match
+>>> baseline: 2.420361 s
+>>> optimized: 0 ns
+
+result not match
+>>> baseline: 19.395122 s
+>>> optimized: 0 ns
+
+result not match
+>>> baseline: 2.370108 s
+>>> optimized: 0 ns
+
+result not match
+>>> baseline: 19.328543 s
+>>> optimized: 1000 ns
+
+result not match
+>>> baseline: 2.387617 s
+>>> optimized: 0 ns
+
+result not match
+>>> baseline: 19.215140 s
+>>> optimized: 0 ns
+
+result not match
+>>> baseline: 2.338891 s
+>>> optimized: 0 ns
+
+result not match
+>>> baseline: 18.877438 s
+>>> optimized: 0 ns
+
+result not match

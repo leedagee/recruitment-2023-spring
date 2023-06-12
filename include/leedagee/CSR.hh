@@ -10,7 +10,7 @@ namespace leedagee {
     struct CSR {
         std::vector<CSREntry> d;
         int m, n;
+        void fromSparseMatrix(const float *data, int m, int n);
     };
 
-    struct CSR fromSparseMatrix(const SparseMatrix &orig);
 }

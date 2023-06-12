@@ -10,12 +10,8 @@ set(VTUNE_REPR 1)
 
 if(${VTUNE_ENABLE})
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DVTUNE_ENABLE")
-    set(VTUNE_REPR 256)
+    set(VTUNE_REPR 128)
     include_directories("${VTUNE_DIR}/sdk/include")
-endif()
-
-if(${STAT_FLADDOPS})
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DSTAT_FLADDOPS")
 endif()
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DVTUNE_REPR=${VTUNE_REPR}")

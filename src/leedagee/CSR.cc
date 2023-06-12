@@ -1,20 +1,19 @@
 #include "leedagee/CSR.hh"
+#include "leedagee/Transpose.hh"
 
 namespace leedagee {
 
-struct CSR fromSparseMatrix(const SparseMatrix &orig) {
-  struct CSR r;
-  auto *data = reinterpret_cast<const std::vector<float> *>(&orig)->data();
-  std::tie(r.m, r.n) = orig.size();
-  r.d.reserve(r.m * r.n / 8);
-  for (int i = 0, c = 0; i < r.m; i++) {
-    for (int j = 0; j < r.n; j++, c++) {
-      const float v = data[c];
+void CSR::fromSparseMatrix(const float *data, int m, int n) {
+  this->m = m;
+  this->n = n;
+  this->d.clear();
+  this->d.reserve(this->m * this->n / 8);
+  for (int i = 0; i < m; i++)
+    for (int j = 0; j < n; j++) {
+      const float v = data[i * n + j];
       if (v != 0.0f)
-        r.d.push_back(CSREntry{i, j, v});
+        this->d.push_back(CSREntry{i, j, v});
     }
-  }
-  return r;
 }
 
 } // namespace leedagee

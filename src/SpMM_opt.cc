@@ -1,5 +1,5 @@
 #include "SpMM.hh"
-#include "leedagee/CSR.hh"
+#include "leedagee/SparseRepresents.hh"
 #include "leedagee/Transpose.hh"
 #ifdef VTUNE_ENABLE
 #include <ittnotify.h>
@@ -18,7 +18,7 @@ Matrix SpMM_opt(const Matrix &A, const SparseMatrix &B) {
     auto [m, k] = A.size();
     auto [n, _k] = B.size();
     auto *aT = new (std::align_val_t(64)) float[m * k];
-    CSR bS;
+    COO bS;
     // #pragma omp parallel num_threads(2)
     {
       // #pragma omp single nowait

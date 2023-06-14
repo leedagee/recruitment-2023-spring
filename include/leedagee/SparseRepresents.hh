@@ -2,6 +2,7 @@
 #include "leedagee/Transpose.hh"
 #include <vector>
 #include <array>
+#include <map>
 
 namespace leedagee {
     typedef struct {
@@ -16,12 +17,16 @@ namespace leedagee {
     };
 
     typedef struct {
+#ifdef DEBUGCSR
+        int x;
+#endif
         int y;
         float v;
     } CSREntry;
 
     struct BCSR {
         std::array<std::vector<int>, MAX_SIZE / COLUMN_BLOCK> idx;
+        std::array<std::map<int, int>, MAX_SIZE / COLUMN_BLOCK> ridx;
         std::vector<CSREntry> d;
         int m, n;
         void fromSparseMatrix(const float *data, int m, int n);

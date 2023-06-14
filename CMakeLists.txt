@@ -16,6 +16,8 @@ endif()
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DVTUNE_REPR=${VTUNE_REPR}")
 
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DDEBUGCSR")
+
 find_package(OpenMP)
 
 include_directories ("${PROJECT_SOURCE_DIR}/src")

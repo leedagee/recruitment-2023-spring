@@ -6,15 +6,18 @@ set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} -DNDEBUG -
 project(SpMM LANGUAGES C CXX)
 
 set(VTUNE_DIR "/opt/intel/oneapi/vtune/latest")
-option(VTUNE_REPR 1)
 
-if(${VTUNE_ENABLE})
+option(VTUNE "Insert vtune pause / resume.")
+set(REPR 1 CACHE STRING "Repeat times")
+set(NTHREADS 8 CACHE STRING "Num of threads")
+
+if(${VTUNE})
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DVTUNE_ENABLE")
-    set(VTUNE_REPR 128)
     include_directories("${VTUNE_DIR}/sdk/include")
 endif()
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DVTUNE_REPR=${VTUNE_REPR}")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DREPR=${REPR}")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DNTHREADS=${NTHREADS}")
 
 # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DDEBUGCSR")
 

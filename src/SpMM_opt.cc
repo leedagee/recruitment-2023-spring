@@ -15,7 +15,7 @@ Matrix SpMM_opt(const Matrix &A, const SparseMatrix &B) {
 #ifdef VTUNE_ENABLE
   __itt_resume();
 #endif
-  for (int __count = 0; __count < VTUNE_REPR; __count++) {
+  for (int __count = 0; __count < REPR; __count++) {
     // A is m*k, B is n*k, C is m*n
     auto [m, k] = A.size();
     auto [n, _k] = B.size();
@@ -24,7 +24,7 @@ Matrix SpMM_opt(const Matrix &A, const SparseMatrix &B) {
     transpose(aT, reinterpret_cast<const vector<float> *>(&A)->data(), m, k);
     bS.fromSparseMatrix(reinterpret_cast<const vector<float> *>(&B)->data(), n,
                         k);
-    auto *cT = new (std::align_val_t(64)) float[m * n];
+    auto *cT = new (std::align_val_t(64)) float[m * n]();
     for (int c = 0, b = 0; b < k / COLUMN_BLOCK; b++) {
       auto &ix = bS.idx[b];
       auto &rix = bS.ridx[b];

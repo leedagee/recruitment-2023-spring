@@ -4,9 +4,9 @@
 #ifdef VTUNE_ENABLE
 #include <ittnotify.h>
 #endif
+#include <cassert>
 #include <iostream>
 #include <omp.h>
-#include <cassert>
 
 using namespace leedagee;
 
@@ -21,9 +21,14 @@ Matrix SpMM_opt(const Matrix &A, const SparseMatrix &B) {
     auto [n, _k] = B.size();
     auto *aT = new (std::align_val_t(64)) float[m * k];
     BCSR bS;
-    transpose(aT, reinterpret_cast<const vector<float> *>(&A)->data(), m, k);
-    bS.fromSparseMatrix(reinterpret_cast<const vector<float> *>(&B)->data(), n,
-                        k);
+#pragma omp sections nowait
+    {
+#pragma omp section
+      transpose(aT, reinterpret_cast<const vector<float> *>(&A)->data(), m, k);
+#pragma omp section
+      bS.fromSparseMatrix(reinterpret_cast<const vector<float> *>(&B)->data(),
+                          n, k);
+    }
     auto *cT = new (std::align_val_t(64)) float[m * n]();
     for (int c = 0, b = 0; b < k / COLUMN_BLOCK; b++) {
       auto &ix = bS.idx[b];
@@ -32,7 +37,8 @@ Matrix SpMM_opt(const Matrix &A, const SparseMatrix &B) {
       // partition[] by row
       int partition[NTHREADS + 1], _;
       for (int i = 0; i < NTHREADS; i++)
-        std::tie(_, partition[i]) = *rix.lower_bound(ix[0] + i * len / NTHREADS);
+        std::tie(_, partition[i]) =
+            *rix.lower_bound(ix[0] + i * len / NTHREADS);
       partition[NTHREADS] = n;
 #pragma omp parallel num_threads(NTHREADS)
       {

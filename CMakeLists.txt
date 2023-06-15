@@ -24,7 +24,8 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DNTHREADS=${NTHREADS}")
 
 # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DDEBUGCSR")
 
-find_package(OpenMP)
+find_package(OpenMP REQUIRED)
+find_package(Threads REQUIRED)
 
 include_directories ("${PROJECT_SOURCE_DIR}/src")
 include_directories ("${PROJECT_SOURCE_DIR}/include")
@@ -37,9 +38,10 @@ aux_source_directory (include SOURCES)
 aux_source_directory (utils SOURCES)
 add_library(SpMM STATIC ${SOURCES})
 # set_property(TARGET SpMM PROPERTY INTERPROCEDURAL_OPTIMIZATION TRUE)
-target_link_libraries(SpMM PRIVATE OpenMP::OpenMP_CXX)
+target_link_libraries(SpMM PUBLIC Threads::Threads)
+target_link_libraries(SpMM PUBLIC rt)
+target_link_libraries(SpMM PUBLIC OpenMP::OpenMP_CXX)
 target_link_libraries(SpMM PRIVATE "${VTUNE_DIR}/sdk/lib64/libittnotify.a")
-target_link_libraries(SpMM PRIVATE dl)
 
 # add_test()
 enable_testing()

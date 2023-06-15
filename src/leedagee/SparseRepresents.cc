@@ -41,6 +41,7 @@ void BCSR::fromSparseMatrix(const float *data, int m, int n) {
     ix[n] = c;
     rix[c] = n;
   }
+  d.emplace_back(CSREntry{0, 0}); // dummy entry to avoid overflow
 }
 
 } // namespace leedagee

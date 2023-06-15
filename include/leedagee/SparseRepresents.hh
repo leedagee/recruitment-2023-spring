@@ -29,8 +29,8 @@ class BCSR {
 public:
   BCSR() = default;
 
-  std::array<std::vector<int>, MAX_SIZE / COLUMN_BLOCK> idx;
-  std::array<std::map<int, int>, MAX_SIZE / COLUMN_BLOCK> ridx;
+  std::array<std::vector<int>, 1> idx;
+  std::array<std::map<int, int>, 1> ridx;
   std::vector<CSREntry> d;
   int m, n;
   void fromSparseMatrix(const float *data, int m, int n);

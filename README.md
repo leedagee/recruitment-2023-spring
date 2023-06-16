@@ -1,3 +1,9 @@
+# pre 见 [./docs/pre.pdf](./docs/pre.pdf)
+
+编译 typst 需要 typst-slides
+
+build.sh 在 hustcpu01 上应该是可用的
+
 # 23-spring-recruiment
 
 # 题目背景

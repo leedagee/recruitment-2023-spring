@@ -23,7 +23,7 @@ cmake \
         -DCMAKE_EXPORT_COMPILE_COMMANDS=1 \
         -DVTUNE=ON \
         -DNTHREADS=16 \
-        -DREPR=1024
+        -DREPR=1
 
 make -C build
 
